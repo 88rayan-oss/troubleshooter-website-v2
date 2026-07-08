@@ -12,7 +12,7 @@ import {
 const H1  = { fontFamily: C.fd, fontWeight: 700, fontSize: 'clamp(32px,5.6vw,58px)', letterSpacing: '-0.025em', lineHeight: 1.12, color: C.t1 };
 const H2  = { fontFamily: C.fd, fontWeight: 700, fontSize: 'clamp(26px,3.8vw,40px)', letterSpacing: '-0.02em', lineHeight: 1.15, color: C.t1 };
 const H3  = { fontFamily: C.fd, fontWeight: 600, fontSize: 'clamp(19px,2.4vw,24px)', letterSpacing: '-0.01em', color: C.t1 };
-const SUB = { fontFamily: C.fb, fontSize: 'clamp(15px,1.7vw,18px)', color: C.t2, lineHeight: 1.65 };
+const SUB = { fontFamily: C.fb, fontSize: 'clamp(15px,1.7vw,18px)', color: C.t2b, lineHeight: 1.65 };
 const MONO = { fontFamily: C.fm, fontSize: 12.5, letterSpacing: '0.01em' };
 const EYE = { ...MONO, fontSize: 11.5, color: C.blueLt, letterSpacing: '.14em', textTransform: 'uppercase' };
 
@@ -73,7 +73,7 @@ function Hero() {
             Built on AWS by senior engineers — documented so your team owns it.
           </p>
           <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
-            <a href="#/audit" className="ts-fill-btn" style={{ fontFamily: C.fb, fontWeight: 600, fontSize: 15 }}>
+            <a href="#/audit" className="ts-amber-btn">
               Talk to an engineer
             </a>
             <button onClick={() => scrollToId('method')} className="ts-ghost-btn"
@@ -112,7 +112,7 @@ const PROBLEMS = [
 
 function Problems() {
   return (
-    <Section id="problems" style={{ background: '#070F1C' }}>
+    <Section id="problems" style={{ background: '#0B1526' }}>
       <Reveal>
         <div style={EYE}>the problems we get called for</div>
         <h2 style={{ ...H2, marginTop: 14, maxWidth: 640 }}>
@@ -182,7 +182,8 @@ function BeforeAfter() {
         transition: dragging ? 'none' : undefined,
       }}>
       {/* BEFORE layer */}
-      <div style={{ padding: 'clamp(18px,4vw,44px)', minHeight: 320, position: 'relative' }}>
+      <div style={{ padding: 'clamp(18px,4vw,44px)', minHeight: 320, position: 'relative',
+        background: 'radial-gradient(560px 300px at 22% 30%, rgba(232,0,61,0.05), transparent 70%)' }}>
         <div style={{ ...MONO, fontSize: 11, color: C.redLt, marginBottom: 16 }}>BEFORE · monday morning</div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'flex-start' }}>
           <div style={{ transform: 'rotate(-1.6deg)' }}><ArtifactEmail /></div>
@@ -195,7 +196,8 @@ function BeforeAfter() {
 
       {/* AFTER layer (clipped) */}
       <div style={{
-        position: 'absolute', inset: 0, background: '#081220',
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(560px 300px at 74% 60%, rgba(39,200,122,0.06), transparent 70%), #081220',
         clipPath: `inset(0 0 0 ${x}%)`,
         transition: dragging ? 'none' : 'clip-path .45s cubic-bezier(.22,1,.36,1)',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
@@ -257,7 +259,7 @@ function NumberMoment() {
 
 function Transformation() {
   return (
-    <Section id="transformation">
+    <Section id="transformation" style={{ background: '#070F1C' }}>
       <Reveal>
         <div style={EYE}>what changes</div>
         <h2 style={{ ...H2, marginTop: 14 }}>Monday morning, before and after.</h2>
@@ -358,7 +360,7 @@ const OFFERINGS = [
 
 function Offerings() {
   return (
-    <Section id="build" style={{ background: '#070F1C' }}>
+    <Section id="build" style={{ background: '#0B1526' }}>
       <Reveal>
         <div style={EYE}>what we build</div>
         <h2 style={{ ...H2, marginTop: 14 }}>One practice. Two things we're hired for.</h2>
@@ -511,7 +513,7 @@ function ReportObject() {
 
 function Close() {
   return (
-    <Section id="start" style={{ background: '#070F1C' }}>
+    <Section id="start" style={{ background: 'radial-gradient(640px 420px at 78% 45%, rgba(39,200,122,0.05), transparent 70%), #0B1526' }}>
       <div style={{
         display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: 'clamp(36px,6vw,72px)', alignItems: 'center',
@@ -525,7 +527,7 @@ function Close() {
             Yours to keep, whatever you decide next.
           </p>
           <div style={{ display: 'flex', gap: 14, marginTop: 28, flexWrap: 'wrap' }}>
-            <a href="#/audit" className="ts-fill-btn" style={{ fontFamily: C.fb, fontWeight: 600, fontSize: 15 }}>
+            <a href="#/audit" className="ts-amber-btn">
               Talk to an engineer
             </a>
             <a href="#/audit" className="ts-ghost-btn" style={{ fontFamily: C.fb, fontSize: 15 }}>
@@ -562,7 +564,7 @@ function Nav() {
           </button>
         ))}
       </div>
-      <a href="#/audit" className="ts-ghost-btn">Talk to an engineer</a>
+      <a href="#/audit" className="ts-amber-btn">Talk to an engineer</a>
     </nav>
   );
 }
@@ -595,6 +597,39 @@ function Footer() {
   );
 }
 
+
+/* ══ FILM STRIP — the ninety-second version ═══════════════════════════════ */
+function FilmStrip() {
+  return (
+    <section className="ts-film-band" style={{ padding: 'clamp(64px,8vw,96px) 24px', textAlign: 'center' }}>
+      <div style={{ maxWidth: 760, margin: '0 auto' }}>
+        <Reveal>
+          <div style={{ ...EYE, color: C.cyan }}>the ninety-second version</div>
+          <h2 style={{ ...H2, marginTop: 14 }}>Watch the whole thing happen.</h2>
+          <p style={{ ...SUB, marginTop: 14, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+            The problems, the audit, the build, the AI layer — told as a scroll film.
+            Ninety seconds, start to finish.
+          </p>
+        </Reveal>
+        <Reveal delay={140}>
+          <a href="#/experience" className="ts-film-btn" style={{ marginTop: 34, textDecoration: 'none' }}>
+            <span className="ts-film-play">▶</span>
+            <span style={{ fontFamily: C.fb, fontWeight: 600, fontSize: 16, color: C.t1 }}>
+              Watch how it works
+            </span>
+          </a>
+        </Reveal>
+        <Reveal delay={240}>
+          <div className="ts-film-acts" style={{ marginTop: 26 }}>
+            <span>recognition</span><span>→</span><span>the scan</span><span>→</span>
+            <span>the build</span><span>→</span><span>the AI layer</span><span>→</span><span>proof</span>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ══ PAGE ══════════════════════════════════════════════════════════════════ */
 export default function HomePage() {
   return (
@@ -607,6 +642,7 @@ export default function HomePage() {
       <Method />
       <About />
       <Close />
+      <FilmStrip />
       <Footer />
     </div>
   );

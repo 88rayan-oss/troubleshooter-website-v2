@@ -87,7 +87,7 @@ a { color: inherit; text-decoration: none; }
 .ts-hero-grid { grid-template-columns: 1.05fr 1fr; align-items: center; }
 .ts-hero-dash {
   transform: perspective(1400px) rotateY(-6deg) rotateX(2deg);
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55));
+  filter: drop-shadow(0 34px 70px rgba(0,0,0,0.55)) drop-shadow(0 12px 60px rgba(42,77,232,0.14));
   transition: transform .5s cubic-bezier(.22,1,.36,1);
 }
 .ts-hero-dash:hover { transform: perspective(1400px) rotateY(-2deg) rotateX(1deg); }
@@ -104,7 +104,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) { .ts-problem-row { grid-template-columns: 1fr; gap: 40px; } }
 .ts-exhibit-stage {
   display: flex; justify-content: center; align-items: center;
-  padding: 34px 12px;
+  padding: 34px 12px; min-height: 208px;
   background:
     radial-gradient(240px 150px at 50% 40%, color-mix(in srgb, var(--glow) 9%, transparent), transparent 75%),
     #0A1220;
@@ -184,7 +184,7 @@ a { color: inherit; text-decoration: none; }
 }
 .ts-method-card:hover { transform: translateY(-3px); border-color: rgba(39,200,122,.35); }
 .ts-method-icon {
-  width: 44px; height: 44px; border-radius: 10px; color: #27C87A;
+  width: 50px; height: 50px; border-radius: 12px; color: #27C87A; font-size: 20px;
   background: rgba(39,200,122,.08); border: 1px solid rgba(39,200,122,.22);
   display: flex; align-items: center; justify-content: center;
 }
@@ -221,20 +221,65 @@ a { color: inherit; text-decoration: none; }
 .ts-nav-links { display: flex; gap: 28px; align-items: center; }
 @media (max-width: 768px) { .ts-nav-links { display: none !important; } }
 
-.ts-hero-dash { transform: rotateX(6deg) rotateY(-4deg); transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.ts-hero-dash:hover { transform: rotateX(0deg) rotateY(0deg); }
-
-.ts-exhibit { transition: transform .35s cubic-bezier(.22,1,.36,1); }
-.ts-exhibit:hover { transform: translateY(-4px); }
 
 .hp-diagram { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .hp-node {
-  background: #0C1624; border: 1px solid #1C2E45; border-radius: 10px;
+  background: #101D33; border: 1px solid #2A4058; border-radius: 10px;
   padding: 12px 14px; text-align: center; min-width: 92px;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;
 }
+.hp-node:hover { transform: translateY(-2px); border-color: #3A5578; }
 .hp-arrow { color: #3D526B; font-size: 15px; flex-shrink: 0; }
 @media (max-width: 640px) {
   .hp-diagram { flex-direction: column; gap: 6px; }
   .hp-arrow { transform: rotate(90deg); }
   .hp-node { width: 100%; }
+}
+
+
+/* ── amber: money actions only ── */
+.ts-amber-btn {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
+  background: #F5A54A; color: #09111F; border: none;
+  padding: 13px 28px; border-radius: 6px; cursor: pointer;
+  display: inline-block;
+  box-shadow: 0 6px 28px rgba(245,165,74,0.22);
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.ts-amber-btn:hover {
+  background: #FFB55C; transform: translateY(-1px);
+  box-shadow: 0 10px 34px rgba(245,165,74,0.3);
+}
+.ts-nav .ts-amber-btn { padding: 8px 18px; font-size: 13px; box-shadow: none; }
+
+/* ── film band ── */
+.ts-film-band {
+  background:
+    radial-gradient(700px 320px at 50% 120%, rgba(91,229,255,0.07), transparent 70%),
+    radial-gradient(560px 300px at 18% -10%, rgba(42,77,232,0.08), transparent 70%),
+    #050B14;
+  border-top: 1px solid rgba(28,46,69,0.5);
+}
+.ts-film-btn {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: rgba(15,26,43,0.7); border: 1px solid rgba(91,229,255,0.35);
+  border-radius: 999px;
+  padding: 12px 30px 12px 12px; cursor: pointer;
+  transition: border-color .25s, box-shadow .25s, transform .2s;
+  backdrop-filter: blur(6px);
+}
+.ts-film-btn:hover {
+  border-color: rgba(91,229,255,0.8);
+  box-shadow: 0 0 40px rgba(91,229,255,0.15);
+  transform: translateY(-2px);
+}
+.ts-film-play {
+  width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(91,229,255,0.12); border: 1.5px solid #5BE5FF;
+  display: flex; align-items: center; justify-content: center;
+  color: #5BE5FF; font-size: 17px; padding-left: 4px;
+}
+.ts-film-acts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.ts-film-acts span {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3D526B;
 }

@@ -3,7 +3,8 @@ export const C = {
   navy: '#09111F', card: '#0F1A2B', cardDeep: '#060E1A', border: '#1C2E45',
   blue: '#2A4DE8', blueLt: '#6B87F5', red: '#E8003D', redLt: '#FF6B8A',
   green: '#27C87A', yellow: '#F0C040', cyan: '#5BE5FF', orange: '#FF9966',
-  t1: '#DDE6F0', t2: '#7A8FA8', t3: '#3D526B',
+  amber: '#F5A54A',                 // warm accent — money actions ONLY
+  t1: '#DDE6F0', t2: '#7A8FA8', t2b: '#8FA3BC', t3: '#3D526B',
   fm: "'JetBrains Mono', monospace",
   fd: "'Space Grotesk', sans-serif",
   fb: "'Inter', sans-serif",
