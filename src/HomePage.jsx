@@ -7,6 +7,7 @@ import { C } from './experience/helpers';
 import {
   ArtifactSpreadsheet, ArtifactEmail, ArtifactNotebook, Dashboard,
 } from './experience/scenes.jsx';
+import logoWhite from './assets/logo-white.png';
 
 /* ── type ─────────────────────────────────────────────────────────────────── */
 const H1  = { fontFamily: C.fd, fontWeight: 700, fontSize: 'clamp(32px,5.6vw,58px)', letterSpacing: '-0.025em', lineHeight: 1.12, color: C.t1 };
@@ -62,38 +63,39 @@ function Hero() {
         background: `radial-gradient(700px 480px at 80% 10%, ${C.blue}12, transparent 70%),
                      radial-gradient(560px 420px at 8% 85%, ${C.green}0A, transparent 70%)`,
       }} />
-      <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
-        <div className={`ts-reveal${inView ? ' in' : ''}`}>
-          <h1 style={{ ...H1, maxWidth: 820 }}>
-            We build the data platforms your business runs on —
-            <span style={{ color: C.blueLt }}> and the infrastructure your AI needs to work.</span>
-          </h1>
-          <p style={{ ...SUB, maxWidth: 620, marginTop: 22 }}>
-            Reports in minutes instead of weeks. AI projects that reach production.
-            Built on AWS by senior engineers — documented so your team owns it.
-          </p>
-          <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
-            <a href="#/audit" className="ts-amber-btn">
-              Talk to an engineer
-            </a>
-            <button onClick={() => scrollToId('method')} className="ts-ghost-btn"
-              style={{ fontFamily: C.fb, fontSize: 15 }}>
-              See how we work
-            </button>
+      <div style={{ maxWidth: 1160, margin: '0 auto', position: 'relative' }}>
+        <div className="ts-hero-grid">
+          <div className={`ts-reveal${inView ? ' in' : ''}`}>
+            <h1 style={{ ...H1 }}>
+              Weeks-old reports. Stalled AI.
+              <span style={{ color: C.blueLt }}> Both are the same problem — the data layer.</span>
+            </h1>
+            <p style={{ ...SUB, maxWidth: 560, marginTop: 22 }}>
+              That's all we do. Data platforms on AWS, built by senior engineers —
+              reports in minutes instead of weeks, AI that reaches production,
+              documented so your team owns it.
+            </p>
+            <div style={{ display: 'flex', gap: 14, marginTop: 34, flexWrap: 'wrap' }}>
+              <a href="#/audit" className="ts-amber-btn">
+                Talk to an engineer
+              </a>
+              <button onClick={() => scrollToId('method')} className="ts-ghost-btn"
+                style={{ fontFamily: C.fb, fontSize: 15 }}>
+                See how we work
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* the deliverable, on screen within one second */}
-        <div className={`ts-reveal${inView ? ' in' : ''}`} style={{
-          transitionDelay: '180ms', marginTop: 'clamp(44px,6vw,70px)',
-          display: 'flex', justifyContent: 'center', perspective: 1200,
-        }}>
-          <div className="ts-hero-dash">
-            <Dashboard visible={true} />
+          {/* the deliverable — overlapping from the right, bleeding off-viewport */}
+          <div className={`ts-reveal${inView ? ' in' : ''} ts-hero-dashcol`}
+            style={{ transitionDelay: '180ms', perspective: 1200 }}>
+            <div className="ts-hero-dash">
+              <Dashboard visible={true} />
+            </div>
+            <div style={{ ...MONO, fontSize: 11, color: C.t3, marginTop: 14 }}>
+              a client operations dashboard — refreshing itself, as delivered
+            </div>
           </div>
-        </div>
-        <div style={{ ...MONO, fontSize: 11, color: C.t3, textAlign: 'center', marginTop: 16 }}>
-          a client operations dashboard — refreshing itself, as delivered
         </div>
       </div>
     </section>
@@ -104,7 +106,7 @@ function Hero() {
 const PROBLEMS = [
   { caption: 'Your monthly report takes three weeks — and nobody fully trusts it.',
     exhibit: <ArtifactSpreadsheet />, tag: 'seen in most audits', tagCol: C.redLt },
-  { caption: 'Six systems, six versions of the numbers, no single view of the business.',
+  { caption: 'Six systems, six versions of the numbers — and a meeting every month about which one is right.',
     exhibit: <ArtifactEmail />, tag: '47-message threads about “which figure is right”', tagCol: C.yellow },
   { caption: 'You hired for AI — and the project stalled at the data.',
     exhibit: <ArtifactNotebook />, tag: 'the model is fine. the plumbing isn’t.', tagCol: C.redLt },
@@ -115,9 +117,7 @@ function Problems() {
     <Section id="problems" style={{ background: '#0B1526' }}>
       <Reveal>
         <div style={EYE}>the problems we get called for</div>
-        <h2 style={{ ...H2, marginTop: 14, maxWidth: 640 }}>
-          If any of this looks familiar, you're who we built this for.
-        </h2>
+        <h2 style={{ ...H2, marginTop: 14, maxWidth: 640 }}>Sound familiar?</h2>
       </Reveal>
       <div style={{
         display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -137,6 +137,11 @@ function Problems() {
           </Reveal>
         ))}
       </div>
+      <Reveal delay={360}>
+        <div style={{ ...MONO, fontSize: 12, color: C.redLt, opacity: 0.8, marginTop: 'clamp(32px,4vw,48px)' }}>
+          Every month this runs, the same 40 hours burn.
+        </div>
+      </Reveal>
     </Section>
   );
 }
@@ -172,9 +177,26 @@ function BeforeAfter() {
     return () => { window.removeEventListener('pointermove', mm); window.removeEventListener('pointerup', up); };
   }, [dragging, move]);
 
+  const tAfter = Math.min(1, Math.max(0, (88 - x) / 76));
+  const mins = Math.exp(Math.log(25920) + (Math.log(14) - Math.log(25920)) * tAfter);
+  const cycle = mins >= 1440 ? `${(mins / 1440).toFixed(mins / 1440 >= 10 ? 0 : 1)} days`
+    : mins >= 60 ? `${Math.round(mins / 60)} hrs` : `${Math.round(mins)} min`;
+  const hours = Math.round(40 * (1 - tAfter));
+  const trust = tAfter > 0.55 ? 'automatic' : tAfter < 0.45 ? 'contested' : '…';
+  const liveCol = tAfter > 0.5 ? C.green : C.orange;
+  const onKey = (e) => {
+    const step = e.key === 'PageUp' || e.key === 'PageDown' ? 12 : 4;
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { setX(v => Math.max(12, v - step)); e.preventDefault(); }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { setX(v => Math.min(88, v + step)); e.preventDefault(); }
+  };
   return (
+    <div>
     <div ref={(el) => { wrapRef.current = el; ref.current = el; }}
       onPointerDown={(e) => { setDragging(true); move(e.clientX); }}
+      tabIndex={0} role="slider" aria-label="Drag to compare before and after"
+      aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(tAfter * 100)}
+      aria-valuetext={`${Math.round(tAfter * 100)}% transformed`}
+      onKeyDown={onKey}
       style={{
         position: 'relative', borderRadius: 14, overflow: 'hidden',
         border: `1px solid ${C.border}`, cursor: 'ew-resize',
@@ -188,9 +210,6 @@ function BeforeAfter() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'flex-start' }}>
           <div style={{ transform: 'rotate(-1.6deg)' }}><ArtifactEmail /></div>
           <div style={{ transform: 'rotate(1.2deg)' }}><ArtifactSpreadsheet /></div>
-        </div>
-        <div style={{ ...MONO, fontSize: 11.5, color: C.t3, marginTop: 18 }}>
-          reporting_cycle: 18 days · analyst_hours: 40/month · trust: contested
         </div>
       </div>
 
@@ -224,6 +243,19 @@ function BeforeAfter() {
         }}>⇄</div>
       </div>
     </div>
+
+    {/* live readout — the numbers move with the divider */}
+    <div style={{
+      display: 'flex', gap: 'clamp(14px,3vw,34px)', flexWrap: 'wrap',
+      justifyContent: 'center', marginTop: 18,
+    }}>
+      {[['reporting_cycle', cycle], ['analyst_hours', `${hours}/month`], ['trust', trust]].map(([k, v]) => (
+        <div key={k} style={{ ...MONO, fontSize: 12.5, color: C.t3 }}>
+          {k}: <span style={{ color: liveCol, fontWeight: 700, transition: 'color .3s' }}>{v}</span>
+        </div>
+      ))}
+    </div>
+    </div>
   );
 }
 
@@ -236,7 +268,8 @@ function NumberMoment() {
     return () => clearTimeout(t);
   }, [inView]);
   return (
-    <div ref={ref} style={{ textAlign: 'center', margin: 'clamp(40px,6vw,64px) 0 clamp(30px,4vw,44px)' }}>
+    <div ref={ref} style={{ textAlign: 'center', minHeight: '52vh', display: 'flex',
+      flexDirection: 'column', justifyContent: 'center', margin: 'clamp(20px,3vw,36px) 0' }}>
       <div style={{ position: 'relative', height: '1.15em', fontFamily: C.fd, fontWeight: 700,
         fontSize: 'clamp(52px,9vw,96px)', letterSpacing: '-0.03em' }}>
         <div style={{
@@ -350,7 +383,7 @@ const OFFERINGS = [
   {
     eyebrow: 'ai infrastructure',
     title: 'Your data, ready for AI.',
-    body: 'The plumbing that makes AI work in production. Most AI projects fail here — not at the model.',
+    body: 'Most AI projects fail at the data layer — not at the model. We build the layer that doesn\u2019t fail.',
     points: ['One source of truth every model trains on',
              'Your documents, answerable by AI — with citations',
              'Models that ship safely and stay healthy in production'],
@@ -364,6 +397,9 @@ function Offerings() {
       <Reveal>
         <div style={EYE}>what we build</div>
         <h2 style={{ ...H2, marginTop: 14 }}>One practice. Two things we're hired for.</h2>
+        <p style={{ ...SUB, marginTop: 12, maxWidth: 620 }}>
+          Pipelines that feed decisions — and the plumbing that makes AI work in production.
+        </p>
       </Reveal>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(28px,4vw,44px)', marginTop: 'clamp(36px,5vw,52px)' }}>
         {OFFERINGS.map((o, i) => (
@@ -407,9 +443,9 @@ const ICONS = {
 
 const METHOD = [
   ['audit', 'Audit first', 'We map what\u2019s wrong before proposing anything.'],
-  ['validate', 'Test before production', 'Nothing experimental touches your environment.'],
+  ['validate', 'Test before production', 'We break things in our environment, never in yours.'],
   ['parallel', 'Run old and new together', 'Until the numbers match, the old process stays.'],
-  ['stabilise', 'Stabilise', '30 days of tuning under real load, included.'],
+  ['stabilise', 'Stay until it\u2019s boring', '30 days of tuning under real load, included.'],
   ['handover', 'Hand it over', 'Documented so your team owns it. No lock-in.'],
 ];
 
@@ -463,10 +499,15 @@ function About() {
             A senior-only practice.
           </div>
           <p style={{ ...SUB, fontSize: 15, flex: '1 1 380px', margin: 0 }}>
-            Every engagement is delivered by engineers who've built these systems before —
-            no juniors learning on your project, no bench, no handoffs.
-            Sri Lanka based, remote-first, serving clients globally.
-            The timezone is a feature: you push context at your end of day and wake up to finished work.
+            Every engagement here is delivered by engineers who've built these systems before —
+            no juniors learning on your project, no bench, no handoffs. I keep this practice
+            deliberately small and senior-only: fewer projects, done properly.
+            Sri Lanka based, remote-first — and the timezone is a feature: you push context
+            at your end of day and wake up to finished work.
+            <span style={{ display: 'block', marginTop: 18, paddingTop: 14, borderTop: `1px solid ${C.border}`,
+              fontFamily: C.fm, fontSize: 12, color: C.t2, maxWidth: 280 }}>
+              — Ryan · Founder, Troubleshooter
+            </span>
           </p>
         </div>
       </Reveal>
@@ -524,11 +565,11 @@ function Close() {
           <p style={{ ...SUB, marginTop: 16, maxWidth: 480 }}>
             Every engagement begins the same way: we map your data environment and hand you
             a written report — what's broken, why, and the sequence to fix it.
-            Yours to keep, whatever you decide next.
+            The report is yours either way.
           </p>
           <div style={{ display: 'flex', gap: 14, marginTop: 28, flexWrap: 'wrap' }}>
             <a href="#/audit" className="ts-amber-btn">
-              Talk to an engineer
+              Start with the audit
             </a>
             <a href="#/audit" className="ts-ghost-btn" style={{ fontFamily: C.fb, fontSize: 15 }}>
               How the audit works →
@@ -554,7 +595,7 @@ function Nav() {
     <nav className={`ts-nav${hidden ? ' hidden' : ''}`}>
       <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-        <span style={{ color: C.red }}>TROUBLE</span><span style={{ color: C.t1 }}>SHOOTER</span>
+        <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
       </a>
       <div className="ts-nav-links">
         {[['What we build', 'build'], ['Method', 'method'], ['Start', 'start']].map(([l, id]) => (
@@ -564,7 +605,7 @@ function Nav() {
           </button>
         ))}
       </div>
-      <a href="#/audit" className="ts-amber-btn">Talk to an engineer</a>
+      <a href="#/audit" className="ts-amber-ghost">Talk to an engineer</a>
     </nav>
   );
 }
@@ -577,7 +618,7 @@ function Footer() {
     }}>
       <div>
         <span style={{ ...MONO, fontWeight: 700, fontSize: 13 }}>
-          <span style={{ color: C.red }}>TROUBLE</span><span style={{ color: C.t1 }}>SHOOTER</span>
+          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
         </span>
         <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
           Data & AI engineering — Sri Lanka based, serving clients globally
@@ -617,6 +658,8 @@ function FilmStrip() {
             <span style={{ fontFamily: C.fb, fontWeight: 600, fontSize: 16, color: C.t1 }}>
               Watch how it works
             </span>
+            <span style={{ ...MONO, fontSize: 11, color: C.t3, border: `1px solid ${C.border}`,
+              borderRadius: 999, padding: '3px 10px' }}>90 seconds</span>
           </a>
         </Reveal>
         <Reveal delay={240}>

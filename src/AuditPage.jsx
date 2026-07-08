@@ -1,6 +1,7 @@
 // AuditPage.jsx — the single conversion destination (#/audit)
 import React, { useState } from 'react';
 import { C } from './experience/helpers';
+import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm };
 const inputStyle = {
@@ -58,7 +59,7 @@ export default function AuditPage() {
       {/* nav */}
       <nav className="ts-nav">
         <a href="#" style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-          <span style={{ color: C.red }}>TROUBLE</span><span style={{ color: C.t1 }}>SHOOTER</span>
+          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
         </a>
         <a href="#" style={{ ...MONO, fontSize: 12.5, color: C.t2 }}>← back</a>
       </nav>

@@ -2,6 +2,7 @@
 // Spec: scroll-storyboard-build-spec.md. All motion scrubbed to scroll; reversible.
 import React, { useEffect, useRef, useState } from 'react';
 import { C, TOTAL_VH, clamp, lerp, seg, eseg, ramp, scrollToVh } from './helpers';
+import logoWhite from '../assets/logo-white.png';
 import {
   ArtifactSpreadsheet, ArtifactEmail, ArtifactTerminal, ArtifactNotebook, ArtifactChat,
   RagScene, FeatureScene, MlopsScene, DriftScene, Dashboard,
@@ -240,7 +241,7 @@ export default function ScrollExperience() {
       <nav className={`ts-nav${navHidden ? ' hidden' : ''}`}>
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-          <span style={{ color: C.red }}>TROUBLE</span><span style={{ color: C.t1 }}>SHOOTER</span>
+          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
         </a>
         <div className="ts-nav-links">
           {[['Data', 430], ['AI', 805], ['Method', 1222]].map(([lbl, to]) => (
@@ -737,7 +738,7 @@ export default function ScrollExperience() {
       }}>
         <div>
           <span style={{ ...MONO, fontWeight: 700, fontSize: 13 }}>
-            <span style={{ color: C.red }}>TROUBLE</span><span style={{ color: C.t1 }}>SHOOTER</span>
+            <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
           </span>
           <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
             Data & AI engineering — Sri Lanka based, serving clients globally
