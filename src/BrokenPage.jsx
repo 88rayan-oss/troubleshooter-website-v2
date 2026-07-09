@@ -3,6 +3,7 @@
 // A lead-gen mechanism wearing a service offering's clothes: the triage call IS the conversation.
 import React, { useState } from 'react';
 import { C } from './experience/helpers';
+import { captureUTM } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm, letterSpacing: '0.01em' };
@@ -25,10 +26,10 @@ export default function BrokenPage() {
     if (state !== 'idle' || !form.name || !form.email) return;
     setState('sending');
     try {
-      await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      await fetch('https://formspree.io/f/YOUR_BROKEN_FORM_ID', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, scope: 'something_is_broken_right_now', source: 'triage_line' }),
+        body: JSON.stringify({ ...form, ...captureUTM(), scope: 'something_is_broken_right_now', source: 'triage_line' }),
       });
       setState('done');
     } catch { setState('done'); }
