@@ -241,7 +241,7 @@ export default function ScrollExperience() {
       <nav className={`ts-nav${navHidden ? ' hidden' : ''}`}>
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+          <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
         </a>
         <div className="ts-nav-links">
           {[['Data', 430], ['AI', 805], ['Method', 1222]].map(([lbl, to]) => (
@@ -278,7 +278,7 @@ export default function ScrollExperience() {
       <div className="ts-visually-hidden">
         <h2>Data engineering, watched end to end</h2>
         <p>It's fixable. It has a sequence. Everything above has a known cause and a known fix. In order.</p>
-        <p>Watch it get built. The same environment. Six stages. Nothing manual survives.
+        <p>Watch it get built.
           Sources: postgres, ERP, SaaS, flat files — every source, mapped.
           Ingest: AWS Glue — extracted on schedule, not by a person.
           Lake: S3 raw, silver, gold — raw kept forever, clean built from raw.
@@ -423,7 +423,6 @@ export default function ScrollExperience() {
                   textAlign: 'center', opacity: buildHeadT, padding: '0 6vw', zIndex: 4,
                 }}>
                   <div style={{ ...L, color: C.t1 }}>Watch it get built.</div>
-                  <div style={{ ...SUB, marginTop: 10 }}>The same environment. Six stages. Nothing manual survives.</div>
                 </div>
               )}
 
@@ -738,7 +737,7 @@ export default function ScrollExperience() {
       }}>
         <div>
           <span style={{ ...MONO, fontWeight: 700, fontSize: 13 }}>
-            <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+            <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
           </span>
           <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
             Data & AI engineering — Sri Lanka based, serving clients globally

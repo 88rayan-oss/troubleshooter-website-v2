@@ -219,13 +219,11 @@ function BeforeAfter() {
         background: 'radial-gradient(560px 300px at 74% 60%, rgba(39,200,122,0.06), transparent 70%), #081220',
         clipPath: `inset(0 0 0 ${x}%)`,
         transition: dragging ? 'none' : 'clip-path .45s cubic-bezier(.22,1,.36,1)',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         padding: 'clamp(18px,4vw,44px)',
       }}>
-        <div style={{ ...MONO, fontSize: 11, color: C.green, marginBottom: 16 }}>AFTER · same monday</div>
-        <div style={{ transform: 'scale(0.92)', transformOrigin: 'left center' }}>
-          <Dashboard visible={inView} />
-        </div>
+        <div style={{ ...MONO, fontSize: 11, color: C.green, marginBottom: 16, alignSelf: 'flex-start' }}>AFTER · same monday</div>
+        <Dashboard visible={inView} />
       </div>
 
       {/* divider handle */}
@@ -595,7 +593,7 @@ function Nav() {
     <nav className={`ts-nav${hidden ? ' hidden' : ''}`}>
       <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-        <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+        <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
       </a>
       <div className="ts-nav-links">
         {[['What we build', 'build'], ['Method', 'method'], ['Start', 'start']].map(([l, id]) => (
@@ -618,7 +616,7 @@ function Footer() {
     }}>
       <div>
         <span style={{ ...MONO, fontWeight: 700, fontSize: 13 }}>
-          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+          <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
         </span>
         <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
           Data & AI engineering — Sri Lanka based, serving clients globally

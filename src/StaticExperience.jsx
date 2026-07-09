@@ -26,7 +26,7 @@ export default function StaticExperience() {
     <div style={{ background: C.navy, color: C.t1, fontFamily: C.fb }}>
       <nav className="ts-nav">
         <span style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+          <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
         </span>
         <a href="#/audit" className="ts-ghost-btn">$ request audit</a>
       </nav>

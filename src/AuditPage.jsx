@@ -59,7 +59,7 @@ export default function AuditPage() {
       {/* nav */}
       <nav className="ts-nav">
         <a href="#" style={{ ...MONO, fontWeight: 700, fontSize: 14 }}>
-          <span className="ts-lockup"><img src={logoWhite} alt="" className="ts-logo" /><span className="ts-lockup-name">TROUBLESHOOTER</span></span>
+          <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
         </a>
         <a href="#" style={{ ...MONO, fontSize: 12.5, color: C.t2 }}>← back</a>
       </nav>
