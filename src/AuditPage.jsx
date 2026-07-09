@@ -66,9 +66,6 @@ export default function AuditPage() {
 
       <div style={{ maxWidth: 1020, margin: '0 auto', padding: '120px 24px 80px' }}>
         {/* header */}
-        <div style={{ ...MONO, fontSize: 12, color: C.blueLt, letterSpacing: '.12em', textTransform: 'uppercase' }}>
-          the entry point
-        </div>
         <h1 style={{
           fontFamily: C.fd, fontWeight: 700, fontSize: 'clamp(32px,5.4vw,56px)',
           letterSpacing: '-0.02em', marginTop: 14, lineHeight: 1.1,
@@ -76,7 +73,7 @@ export default function AuditPage() {
           Data & AI Readiness Audit
         </h1>
         <div style={{ fontFamily: C.fd, fontSize: 'clamp(18px,2.6vw,26px)', fontWeight: 600, marginTop: 12 }}>
-          <span style={{ color: C.green }}>$4,500</span>
+          <span style={{ color: C.green }}>4,500 USD</span>
           <span style={{ color: C.t3 }}> · </span>five days
           <span style={{ color: C.t3 }}> · </span>a written report
         </div>
@@ -124,7 +121,7 @@ export default function AuditPage() {
               {['#FF5F57', '#FEBC2E', '#28C840'].map((c) => (
                 <span key={c} style={{ width: 9, height: 9, borderRadius: '50%', background: c }} />
               ))}
-              <span style={{ ...MONO, fontSize: 11, color: C.t3, marginLeft: 4 }}>ts-audit --request</span>
+              <span style={{ ...MONO, fontSize: 11, color: C.t3, marginLeft: 4 }}>start the conversation</span>
             </div>
             <div style={{ padding: '22px 24px', display: 'flex', flexDirection: 'column', gap: 13 }}>
               <input style={inputStyle} placeholder="your_name" value={form.name} onChange={set('name')} />
@@ -152,9 +149,9 @@ export default function AuditPage() {
               }}>
                 {state === 'done' ? '✓ received — we respond within one business day'
                   : state === 'loading' ? '$ submitting...'
-                  : '$ ts-audit --submit'}
+                  : '$ start the conversation'}
               </button>
-              <div style={{ ...MONO, fontSize: 11, color: C.t3 }}># no spam. no sequences. engineers only.</div>
+              <div style={{ ...MONO, fontSize: 11, color: C.t3 }}># goes straight to the founder. reply within one business day.</div>
             </div>
           </div>
         </div>

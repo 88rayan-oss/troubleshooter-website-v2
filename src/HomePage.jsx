@@ -204,7 +204,7 @@ function BeforeAfter() {
         transition: dragging ? 'none' : undefined,
       }}>
       {/* BEFORE layer */}
-      <div style={{ padding: 'clamp(18px,4vw,44px)', minHeight: 320, position: 'relative',
+      <div style={{ padding: 'clamp(18px,4vw,44px)', minHeight: 'clamp(410px,32vw,470px)', position: 'relative',
         background: 'radial-gradient(560px 300px at 22% 30%, rgba(232,0,61,0.05), transparent 70%)' }}>
         <div style={{ ...MONO, fontSize: 11, color: C.redLt, marginBottom: 16 }}>BEFORE · monday morning</div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'flex-start' }}>

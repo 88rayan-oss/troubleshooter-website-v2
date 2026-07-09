@@ -89,7 +89,7 @@ export default function StaticExperience() {
           <div style={{ ...MONO, fontSize: 12, color: C.blueLt, letterSpacing: '.12em', textTransform: 'uppercase' }}>the entry point</div>
           <h2 style={{ ...L, marginTop: 14 }}>Data & AI Readiness Audit <span style={{ color: C.green }}>✓</span></h2>
           <div style={{ fontFamily: C.fd, fontSize: 22, fontWeight: 600, marginTop: 10 }}>
-            <span style={{ color: C.green }}>$4,500</span><span style={{ color: C.t3 }}> · </span>
+            <span style={{ color: C.green }}>4,500 USD</span><span style={{ color: C.t3 }}> · </span>
             five days<span style={{ color: C.t3 }}> · </span>a written report
           </div>
           <p style={{ ...SUB, marginTop: 14, maxWidth: 520 }}>
