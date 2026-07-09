@@ -6,6 +6,7 @@ import ScrollExperience from './experience/ScrollExperience.jsx';
 import StaticExperience from './StaticExperience.jsx';
 import AuditPage from './AuditPage.jsx';
 import BrokenPage from './BrokenPage.jsx';
+import ReviewPage from './ReviewPage.jsx';
 import './experience/styles.css';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
 
   if (route.startsWith('#/audit')) return <AuditPage />;
   if (route.startsWith('#/broken')) return <BrokenPage />;
+  if (route.startsWith('#/review')) return <ReviewPage />;
   if (route.startsWith('#/experience')) return reduced ? <StaticExperience /> : <ScrollExperience />;
   return <HomePage />;
 }
