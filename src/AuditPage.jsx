@@ -134,6 +134,7 @@ export default function AuditPage() {
                 <option>rag_document_intelligence</option>
                 <option>mlops_model_deployment</option>
                 <option>full_audit_start_everywhere</option>
+                <option>something_is_broken_right_now</option>
               </select>
               <select style={{ ...inputStyle, appearance: 'none' }} value={form.size} onChange={set('size')}>
                 <option value="" disabled>--organisation-size</option>
@@ -152,6 +153,7 @@ export default function AuditPage() {
                   : '$ start the conversation'}
               </button>
               <div style={{ ...MONO, fontSize: 11, color: C.t3 }}># goes straight to the founder. reply within one business day.</div>
+              <div style={{ ...MONO, fontSize: 11, color: C.t3 }}># data on fire today instead? <a href="#/broken" style={{ color: C.redLt }}>the triage line →</a></div>
             </div>
           </div>
         </div>

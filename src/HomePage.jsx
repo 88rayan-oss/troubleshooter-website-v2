@@ -624,6 +624,7 @@ function Footer() {
       </div>
       <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
         <a href="#/audit" style={{ ...MONO, fontSize: 12, color: C.t3 }}>Audit</a>
+        <a href="#/broken" style={{ ...MONO, fontSize: 12, color: C.redLt }}>Broken right now?</a>
         <a href="#/experience" style={{ ...MONO, fontSize: 12, color: C.t3 }}>watch how it works →</a>
         <a href="mailto:hello@troubleshooter.lk" style={{ ...MONO, fontSize: 12, color: C.t3 }}>hello@troubleshooter.lk</a>
       </div>
