@@ -500,8 +500,8 @@ function About() {
             Every engagement here is delivered by engineers who've built these systems before —
             no juniors learning on your project, no bench, no handoffs. I keep this practice
             deliberately small and senior-only: fewer projects, done properly.
-            Sri Lanka based, remote-first — and the timezone is a feature: you push context
-            at your end of day and wake up to finished work.
+            Remote-first, with founders in the US and South Asia — coverage across
+            time zones means you push context at your end of day and wake up to finished work.
             <span style={{ display: 'block', marginTop: 18, paddingTop: 14, borderTop: `1px solid ${C.border}`,
               fontFamily: C.fm, fontSize: 12, color: C.t2, maxWidth: 280 }}>
               — Ryan · Founder, Troubleshooter
@@ -619,7 +619,7 @@ function Footer() {
           <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
         </span>
         <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
-          Data & AI engineering — Sri Lanka based, serving clients globally
+          Data & AI engineering
         </div>
       </div>
       <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>

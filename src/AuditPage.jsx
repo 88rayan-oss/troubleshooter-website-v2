@@ -28,8 +28,8 @@ const FAQS = [
    'Yes — this is often where we add the most value. Mid-migration, the architecture and cost decisions are still open. Mid-AI-project, the stall is almost always at the data layer, and the fix is specific and buildable.'],
   ['Do you build the AI models themselves?',
    'No — deliberately. We build the data infrastructure models run on: pipelines, feature stores, RAG systems, deployment automation, observability. Most AI failures happen at the infrastructure layer, not the modelling layer.'],
-  ['You\u2019re based in Sri Lanka. How does that work?',
-   'Remote-first, and the timezone is a feature: you push context at your end of day and wake up to completed work. Senior AWS engineering at rates that make sense. Nothing about this model constrains quality.'],
+  ['Where are you based?',
+   'Remote-first, with founders in the US and South Asia. Coverage across time zones means you push context at your end of day and wake up to completed work. Senior AWS engineering at rates that make sense.'],
   ['What happens after the build?',
    'A 30-day stabilisation period is included in every engagement. After that you choose: full handover — everything is documented for exactly this reason — or a retainer where we keep operating what we built.'],
 ];
@@ -73,7 +73,7 @@ export default function AuditPage() {
           Data & AI Readiness Audit
         </h1>
         <div style={{ fontFamily: C.fd, fontSize: 'clamp(18px,2.6vw,26px)', fontWeight: 600, marginTop: 12 }}>
-          <span style={{ color: C.green }}>4,500 USD</span>
+          <span style={{ color: C.green }}>USD 4,500</span>
           <span style={{ color: C.t3 }}> · </span>five days
           <span style={{ color: C.t3 }}> · </span>a written report
         </div>

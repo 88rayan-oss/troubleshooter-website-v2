@@ -295,11 +295,11 @@ export default function ScrollExperience() {
         <h2>Data &amp; AI Readiness Audit</h2>
         <p>This is what done looks like. Live. Automated. Documented well enough that your team owns it.
           Nothing touches production until it's proven: audit, validate, parallel-run, stabilise, hand over.</p>
-        <p>Data &amp; AI Readiness Audit — 4,500 USD, five days, a written report.
+        <p>Data &amp; AI Readiness Audit — USD 4,500, five days, a written report.
           We map exactly what's wrong in your data stack and sequence the fix.
           The report is yours, with or without us. What follows, if you choose: a scoped build, or ongoing ownership.</p>
         <p><a href="#/audit">Request the audit</a>. Troubleshooter — data and AI engineering,
-          Sri Lanka based, serving clients globally. hello@troubleshooter.lk</p>
+          hello@troubleshooter.lk</p>
       </div>
 
       {/* ── FIXED READINESS CHIP ── */}
@@ -705,7 +705,7 @@ export default function ScrollExperience() {
                     </div>
                   </div>
                   <div style={{ ...M, color: C.t1, marginTop: 14 }}>
-                    <span style={{ color: C.green }}>4,500 USD</span>
+                    <span style={{ color: C.green }}>USD 4,500</span>
                     <span style={{ color: C.t3 }}> · </span>five days
                     <span style={{ color: C.t3 }}> · </span>a written report
                   </div>
@@ -740,7 +740,7 @@ export default function ScrollExperience() {
             <img src={logoWhite} alt="Troubleshooter" className="ts-logo" />
           </span>
           <div style={{ fontFamily: C.fb, fontSize: 12.5, color: C.t3, marginTop: 6 }}>
-            Data & AI engineering — Sri Lanka based, serving clients globally
+            Data & AI engineering
           </div>
         </div>
         <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
