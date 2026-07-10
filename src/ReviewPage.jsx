@@ -23,7 +23,7 @@ export default function ReviewPage() {
     if (state !== 'idle' || !form.name || !form.email || !form.stack) return;
     setState('sending');
     try {
-      await fetch('https://formspree.io/f/YOUR_REVIEW_FORM_ID', {
+      await fetch('https://formspree.io/f/https://formspree.io/f/mqevrppl', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ ...form, ...captureUTM(), scope: 'free_data_layer_review', source: 'review_page' }),
