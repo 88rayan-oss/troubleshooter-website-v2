@@ -46,10 +46,10 @@ export default function AuditPage() {
     if (state !== 'idle') return;
     setState('loading');
     try {
-      await fetch('https://formspree.io/f/mrewnlqz', {
+      await fetch('https://formspree.io/f/xnjkezvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, ...captureUTM() }),
+        body: JSON.stringify({ ...form, ...captureUTM(), source: 'audit_page' }),
       });
     } catch { /* fall through to done */ }
     setState('done');
