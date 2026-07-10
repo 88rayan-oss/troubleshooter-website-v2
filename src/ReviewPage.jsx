@@ -20,16 +20,16 @@ export default function ReviewPage() {
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const submit = async () => {
-    if (state !== 'idle' || !form.name || !form.email || !form.stack) return;
+    if ((state !== 'idle' && state !== 'error') || !form.name || !form.email || !form.stack) return;
     setState('sending');
     try {
-      await fetch('https://formspree.io/f/https://formspree.io/f/mqevrppl', {
+      const res = await fetch('https://formspree.io/f/mqevrppl', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ ...form, ...captureUTM(), scope: 'free_data_layer_review', source: 'review_page' }),
       });
-      setState('done');
-    } catch { setState('done'); }
+      setState(res.ok ? 'done' : 'error');
+    } catch { setState('error'); }
   };
 
   const inputStyle = {
@@ -127,13 +127,15 @@ export default function ReviewPage() {
                 value={form.pain} onChange={set('pain')} />
               <input style={inputStyle} placeholder="link to a diagram/doc (optional)" value={form.link} onChange={set('link')} />
               <button onClick={submit} className="ts-fill-btn" style={{
-                background: state === 'done' ? C.green : C.blue,
+                background: state === 'done' ? C.green : state === 'error' ? C.redLt : C.blue,
                 color: state === 'done' ? C.navy : '#fff',
-                cursor: state === 'idle' ? 'pointer' : 'default',
+                cursor: (state === 'idle' || state === 'error') ? 'pointer' : 'default',
                 fontFamily: C.fm, fontSize: 13, padding: '12px', border: 'none', borderRadius: 4,
               }}>
                 {state === 'done' ? '✓ received — your written review arrives within 5 business days'
-                  : state === 'sending' ? 'sending…' : '$ request the free review'}
+                  : state === 'sending' ? 'sending…'
+                  : state === 'error' ? '⚠ something went wrong — click to try again'
+                  : '$ request the free review'}
               </button>
               <div style={{ ...MONO, fontSize: 10.5, color: C.t3 }}>
                 # no call required. no pitch attached.
