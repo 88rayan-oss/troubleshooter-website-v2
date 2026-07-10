@@ -28,3 +28,37 @@ export function captureUTM() {
   } catch {}
   return { utm_source: '(direct)', utm_medium: '(none)', utm_campaign: '(none)' };
 }
+
+// ── Visit logging ───────────────────────────────────────────────────────────
+// Logs "someone with this exact tag loaded the page" — separate from form
+// submission, so we know who *looked* even if they never converted. Only
+// fires for tagged (campaign) visits, not casual/direct browsing, and only
+// once per browser session per page — a refresh or clicking between pages
+// won't double-log the same visit. Uses its own dedicated Formspree form so
+// visit-ping volume never competes with actual lead submissions for the
+// same monthly cap.
+const VISITS_ENDPOINT = 'https://formspree.io/f/YOUR_VISITS_FORM_ID';
+
+export function logVisit(pageName) {
+  const utm = captureUTM();
+  if (!utm.utm_source || utm.utm_source === '(direct)') return; // only tagged visits
+
+  const dedupeKey = `ts_visit_logged_${pageName}_${utm.utm_content || utm.utm_campaign || 'unknown'}`;
+  try {
+    if (sessionStorage.getItem(dedupeKey)) return; // already logged this visit this session
+    sessionStorage.setItem(dedupeKey, '1');
+  } catch {}
+
+  // Fire-and-forget — a background log, not a user-facing action. No error
+  // handling shown to the visitor; if it fails, it just fails quietly.
+  fetch(VISITS_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      event: 'page_visit',
+      page: pageName,
+      ...utm,
+      visited_at: new Date().toISOString(),
+    }),
+  }).catch(() => {});
+}

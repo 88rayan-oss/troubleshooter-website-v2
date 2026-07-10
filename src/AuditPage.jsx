@@ -1,7 +1,7 @@
 // AuditPage.jsx — the single conversion destination (#/audit)
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM } from './utm';
+import { captureUTM, logVisit } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm };
@@ -36,6 +36,8 @@ const FAQS = [
 ];
 
 export default function AuditPage() {
+  useEffect(() => { logVisit('audit'); }, []);
+
   const [form, setForm] = useState({ name: '', org: '', email: '', scope: '', size: '' });
   const [state, setState] = useState('idle'); // idle | loading | done
   const [openFaq, setOpenFaq] = useState(null);

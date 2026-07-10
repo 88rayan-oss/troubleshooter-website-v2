@@ -1,9 +1,9 @@
 // BrokenPage.jsx — the triage line. #/broken
 // "Something's broken right now?" — free 30-min triage call, Rapid Diagnostic behind it.
 // A lead-gen mechanism wearing a service offering's clothes: the triage call IS the conversation.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM } from './utm';
+import { captureUTM, logVisit } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm, letterSpacing: '0.01em' };
@@ -18,6 +18,8 @@ const EMERGENCIES = [
 ];
 
 export default function BrokenPage() {
+  useEffect(() => { logVisit('broken'); }, []);
+
   const [form, setForm] = useState({ name: '', org: '', email: '', broke: '', detail: '' });
   const [state, setState] = useState('idle');
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));

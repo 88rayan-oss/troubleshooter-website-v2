@@ -1,9 +1,9 @@
 // ReviewPage.jsx — the free Data Layer Review. #/review
 // The middle rung of the ladder: score yourself (instant) -> written review (days) -> audit (paid).
 // Global-market trust-builder: async, bounded, capacity-limited, no call required.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM } from './utm';
+import { captureUTM, logVisit } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm, letterSpacing: '0.01em' };
@@ -13,6 +13,8 @@ const SUB = { fontFamily: C.fb, fontSize: 'clamp(15px,1.7vw,17.5px)', color: C.t
 const CAPACITY_TOTAL = 5;
 
 export default function ReviewPage() {
+  useEffect(() => { logVisit('review'); }, []);
+
   const [form, setForm] = useState({ name: '', org: '', email: '', stack: '', pain: '', link: '' });
   const [state, setState] = useState('idle');
   // Capacity is a stated weekly cap, not a live counter against a backend —
