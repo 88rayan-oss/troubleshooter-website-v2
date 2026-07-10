@@ -28,7 +28,7 @@ export default function BrokenPage() {
     if (state !== 'idle' || !form.name || !form.email) return;
     setState('sending');
     try {
-      await fetch('https://formspree.io/f/YOUR_BROKEN_FORM_ID', {
+      await fetch('https://formspree.io/f/xnjkezvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ ...form, ...captureUTM(), scope: 'something_is_broken_right_now', source: 'triage_line' }),

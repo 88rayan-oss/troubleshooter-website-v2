@@ -37,7 +37,7 @@ export function captureUTM() {
 // won't double-log the same visit. Uses its own dedicated Formspree form so
 // visit-ping volume never competes with actual lead submissions for the
 // same monthly cap.
-const VISITS_ENDPOINT = 'https://formspree.io/f/YOUR_VISITS_FORM_ID';
+const VISITS_ENDPOINT = 'https://formspree.io/f/mjgqnorg';
 
 export function logVisit(pageName) {
   const utm = captureUTM();
