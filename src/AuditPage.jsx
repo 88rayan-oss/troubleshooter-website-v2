@@ -1,7 +1,7 @@
 // AuditPage.jsx — the single conversion destination (#/audit)
 import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM, logVisit } from './utm';
+import { captureUTM, logVisit, logLeadToTracker } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm };
@@ -46,6 +46,7 @@ export default function AuditPage() {
     if (state !== 'idle') return;
     setState('loading');
     try {
+      logLeadToTracker({ ...form, ...captureUTM(), source: 'audit_page' });
       await fetch('https://formspree.io/f/xnjkezbn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },

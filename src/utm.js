@@ -38,6 +38,9 @@ export function captureUTM() {
 // visit-ping volume never competes with actual lead submissions for the
 // same monthly cap.
 const VISITS_ENDPOINT = 'https://formspree.io/f/mjgqnorg';
+// Self-hosted tracker (VM). All events dual-write: Formspree keeps the email
+// trail and survives VM downtime; the tracker DB makes everything queryable.
+const TRACK_API = 'https://track.troubleshooterdata.com';
 
 export function logVisit(pageName) {
   const utm = captureUTM();
@@ -51,14 +54,32 @@ export function logVisit(pageName) {
 
   // Fire-and-forget — a background log, not a user-facing action. No error
   // handling shown to the visitor; if it fails, it just fails quietly.
+  const payload = {
+    event: 'page_visit',
+    page: pageName,
+    ...utm,
+    visited_at: new Date().toISOString(),
+  };
   fetch(VISITS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      event: 'page_visit',
-      page: pageName,
-      ...utm,
-      visited_at: new Date().toISOString(),
-    }),
+    body: JSON.stringify(payload),
   }).catch(() => {});
+  fetch(`${TRACK_API}/api/track/visit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }).catch(() => {});
+}
+
+// Fire-and-forget lead mirror to the self-hosted tracker. Called by the form
+// pages alongside (never instead of) their Formspree submission.
+export function logLeadToTracker(payload) {
+  try {
+    fetch(`${TRACK_API}/api/track/lead`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(() => {});
+  } catch {}
 }

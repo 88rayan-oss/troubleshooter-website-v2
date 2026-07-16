@@ -3,7 +3,7 @@
 // A lead-gen mechanism wearing a service offering's clothes: the triage call IS the conversation.
 import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM, logVisit } from './utm';
+import { captureUTM, logVisit, logLeadToTracker } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm, letterSpacing: '0.01em' };
@@ -28,6 +28,7 @@ export default function BrokenPage() {
     if (state !== 'idle' || !form.name || !form.email) return;
     setState('sending');
     try {
+      logLeadToTracker({ ...form, ...captureUTM(), scope: 'something_is_broken_right_now', source: 'triage_line' });
       await fetch('https://formspree.io/f/xnjkezvn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },

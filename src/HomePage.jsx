@@ -626,6 +626,7 @@ function Footer() {
         <a href="#/audit" style={{ ...MONO, fontSize: 12, color: C.t3 }}>Audit</a>
         <a href="#/broken" style={{ ...MONO, fontSize: 12, color: C.redLt }}>Broken right now?</a>
         <a href="#/review" style={{ ...MONO, fontSize: 12, color: C.cyan }}>Free stack review</a>
+        <a href="#/webinar" style={{ ...MONO, fontSize: 12, color: C.t2 }}>Webinars</a>
         <a href="#/experience" style={{ ...MONO, fontSize: 12, color: C.t3 }}>watch how it works →</a>
         <a href="mailto:hello@troubleshooter.lk" style={{ ...MONO, fontSize: 12, color: C.t3 }}>hello@troubleshooter.lk</a>
       </div>

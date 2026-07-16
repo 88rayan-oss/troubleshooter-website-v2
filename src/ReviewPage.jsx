@@ -3,7 +3,7 @@
 // Global-market trust-builder: async, bounded, capacity-limited, no call required.
 import React, { useState, useEffect } from 'react';
 import { C } from './experience/helpers';
-import { captureUTM, logVisit } from './utm';
+import { captureUTM, logVisit, logLeadToTracker } from './utm';
 import logoWhite from './assets/logo-white.png';
 
 const MONO = { fontFamily: C.fm, letterSpacing: '0.01em' };
@@ -25,6 +25,7 @@ export default function ReviewPage() {
     if ((state !== 'idle' && state !== 'error') || !form.name || !form.email || !form.stack) return;
     setState('sending');
     try {
+      logLeadToTracker({ ...form, ...captureUTM(), scope: 'free_data_layer_review', source: 'review_page' });
       const res = await fetch('https://formspree.io/f/mqevrppl', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
