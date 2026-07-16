@@ -108,8 +108,9 @@ export default function AuditPage() {
             }}>
               <div style={{ ...MONO, fontSize: 11, color: C.blueLt, marginBottom: 10 }}># what follows, if you choose</div>
               <p style={{ fontSize: 14, color: C.t2, lineHeight: 1.7 }}>
-                <strong style={{ color: C.t1 }}>A scoped build</strong> — a data platform, RAG system,
-                or MLOps pipeline, validated before production with a 30-day stabilisation period. Or{' '}
+                <strong style={{ color: C.t1 }}>A scoped build</strong> — a data pipeline, an
+                AWS-native data platform, or a drift/observability layer, validated before
+                production with a 30-day stabilisation period. Or{' '}
                 <strong style={{ color: C.t1 }}>ongoing ownership</strong> — a retainer covering pipeline
                 operations, monitoring, and a quarterly architecture review.
               </p>

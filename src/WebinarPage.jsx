@@ -23,8 +23,16 @@ const SESSIONS = [
     status: 'open',
   },
   {
-    id: 'rag',
+    id: 'aws',
     tag: 'session 02',
+    color: C.blueLt,
+    title: 'Is AWS the right home for your data pipeline?',
+    desc: 'The five decisions that actually matter when choosing a platform \u2014 where AWS genuinely wins, where it honestly doesn\u2019t, and one reference architecture that survives production.',
+    status: 'upcoming',
+  },
+  {
+    id: 'rag',
+    tag: 'session 03',
     color: C.yellow,
     title: 'Why RAG breaks — chunking, retrieval, and what actually fixes it',
     desc: 'The specific, fixable reasons a RAG system returns confident wrong answers — and the hybrid search + re-ranking approach that closes the gap.',
@@ -32,7 +40,7 @@ const SESSIONS = [
   },
   {
     id: 'mlops',
-    tag: 'session 03',
+    tag: 'session 04',
     color: C.orange,
     title: 'From notebook to production — building a pipeline that survives contact',
     desc: 'The gap between a model that works in Jupyter and one that\u2019s reliably retrainable, versioned, and safe to roll back.',
@@ -40,7 +48,7 @@ const SESSIONS = [
   },
   {
     id: 'observability',
-    tag: 'session 04',
+    tag: 'session 05',
     color: C.redLt,
     title: 'The 47-minute problem — catching data drift before the model does',
     desc: 'Why most model degradation is a data problem wearing a model-shaped costume, and how to catch it in under two minutes instead of 47.',

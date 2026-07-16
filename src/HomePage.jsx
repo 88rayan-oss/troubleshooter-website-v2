@@ -383,8 +383,8 @@ const OFFERINGS = [
     title: 'Your data, ready for AI.',
     body: 'Most AI projects fail at the data layer — not at the model. We build the layer that doesn\u2019t fail.',
     points: ['One source of truth every model trains on',
-             'Your documents, answerable by AI — with citations',
-             'Models that ship safely and stay healthy in production'],
+             'AI-readiness audited before anything is built — gaps named and sequenced',
+             'Schema drift caught at the source in minutes — not in month-old reports'],
     diagram: <AiStackDiagram />,
   },
 ];
