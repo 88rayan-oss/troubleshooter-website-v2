@@ -44,7 +44,7 @@ const TRACK_API = 'https://track.troubleshooterdata.com';
 
 export function logVisit(pageName) {
   const utm = captureUTM();
-  if (!utm.utm_source || utm.utm_source === '(direct)') return; // only tagged visits
+  if (!utm.utm_content && !utm.utm_campaign) return; // only tracked links (per-person code or campaign tag)
 
   const dedupeKey = `ts_visit_logged_${pageName}_${utm.utm_content || utm.utm_campaign || 'unknown'}`;
   try {
