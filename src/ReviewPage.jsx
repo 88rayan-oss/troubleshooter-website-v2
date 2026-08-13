@@ -12,10 +12,23 @@ const SUB = { fontFamily: C.fb, fontSize: 'clamp(15px,1.7vw,17.5px)', color: C.t
 
 const CAPACITY_TOTAL = 5;
 
+// Campaign-specific context — same unbranded, descriptive language as the
+// originating email, never a product name or pricing. Keeps this page
+// relevant to what actually brought the visitor here without exposing
+// anything premature. Add a new key here for each future targeted campaign.
+const CAMPAIGN_CONTEXT = {
+  outbound_lk_func_hr: {
+    label: 'attendance & payroll',
+    color: C.cyan,
+    text: "If this is about attendance specifically \u2014 devices talking straight to payroll, no back-office PC, no monthly USB export, no chasing who fell out of sync \u2014 that's exactly the kind of setup this review covers. We run exactly this in production today, across multiple sites and hundreds of devices.",
+  },
+};
+
 export default function ReviewPage() {
   useEffect(() => { logVisit('review'); }, []);
 
   const [form, setForm] = useState({ name: '', org: '', email: '', stack: '', pain: '', link: '' });
+  const campaignContext = CAMPAIGN_CONTEXT[captureUTM().utm_campaign];
   const [state, setState] = useState('idle');
   // Capacity is a stated weekly cap, not a live counter against a backend —
   // shown as a static, honest line rather than a fake ticking scarcity widget.
@@ -64,6 +77,19 @@ export default function ReviewPage() {
           likely fragile, and the three things we'd look at first. No pitch, no call,
           no obligation.
         </p>
+
+        {campaignContext && (
+          <div style={{
+            marginTop: 22, maxWidth: 640, padding: '16px 18px',
+            background: `${campaignContext.color}0d`,
+            border: `1px solid ${campaignContext.color}44`, borderRadius: 6,
+          }}>
+            <div style={{ ...MONO, fontSize: 11, color: campaignContext.color, marginBottom: 8 }}>
+              # specifically about {campaignContext.label}
+            </div>
+            <div style={{ fontSize: 13.5, color: C.t2, lineHeight: 1.7 }}>{campaignContext.text}</div>
+          </div>
+        )}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 12, marginTop: 32 }}>
           {[
