@@ -23,7 +23,7 @@ const SESSIONS = [
     id: 'manageengine',
     tag: 'partner session',
     color: C.blueLt,
-    title: 'AD/M365 Access Audit — live walkthrough with ManageEngine',
+    title: 'AD/M365 Access Audit: live walkthrough with ManageEngine',
     desc: 'A live demo of ADAudit Plus \u2014 who actually has admin access across AD and M365, stale and orphaned accounts, MFA gaps, real-time alerts on privileged changes. The exact audit most teams know they should run and never quite get to.',
     presenter: 'Troubleshooter × ManageEngine',
     status: 'open',
@@ -32,7 +32,7 @@ const SESSIONS = [
     id: 'commvault',
     tag: 'partner session',
     color: C.orange,
-    title: 'Server & Endpoint Backup — live walkthrough with Commvault',
+    title: 'Server & Endpoint Backup: live walkthrough with Commvault',
     desc: 'A live demo covering both server and endpoint backup \u2014 what actually happens during a real recovery, not just a backup job completing successfully. If you\u2019ve wondered whether your backups would actually save you, this answers it.',
     presenter: 'Troubleshooter × Commvault',
     status: 'upcoming',
@@ -83,11 +83,11 @@ export default function WebinarPage() {
         </div>
         <h1 style={H1}>Partner technical sessions.</h1>
         <p style={{ ...SUB, maxWidth: 640, marginTop: 18 }}>
-          Real product, real demo, run alongside the vendor's own presales
-          engineer — not a slide deck. Worth saying plainly: anyone who wants
-          to move forward afterward gets our special partner pricing through
-          this session. That's the honest shape of it — a real technical
-          session, with a real path to a deal if it's the right fit.
+          Real product, real demo, run jointly with the vendor's own
+          technical team, not a slide deck. Worth saying plainly: anyone
+          who wants to move forward afterward gets our special partner
+          pricing through this session. A real technical session, with a
+          real path to a deal if it's the right fit.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 40 }}>
@@ -123,7 +123,7 @@ export default function WebinarPage() {
             <input style={inputStyle} placeholder="your_name" value={form.name} onChange={set('name')} />
             <input style={inputStyle} placeholder="organisation" value={form.org} onChange={set('org')} />
             <input style={inputStyle} placeholder="work@email.com" type="email" value={form.email} onChange={set('email')} />
-            <input style={inputStyle} placeholder="phone (optional — for vendor follow-up on pricing)" value={form.phone} onChange={set('phone')} />
+            <input style={inputStyle} placeholder="phone (optional, for vendor follow-up on pricing)" value={form.phone} onChange={set('phone')} />
             <div style={{ ...MONO, fontSize: 10.5, color: C.t3 }}>registering for: {SESSIONS.find(s => s.id === form.session)?.title}</div>
             <button onClick={submit} className="ts-fill-btn" style={{
               background: state === 'done' ? C.green : state === 'error' ? C.redLt : C.blue,
@@ -131,10 +131,10 @@ export default function WebinarPage() {
               cursor: (state === 'idle' || state === 'error') ? 'pointer' : 'default',
               fontFamily: C.fm, fontSize: 13, padding: '12px', border: 'none', borderRadius: 4,
             }}>
-              {state === 'done' ? '✓ registered — the join link arrives by email'
+              {state === 'done' ? '✓ registered, the join link arrives by email'
                 : state === 'sending' ? 'sending…'
-                : state === 'error' ? '⚠ something went wrong — click to try again'
-                : '$ register — free'}
+                : state === 'error' ? '⚠ something went wrong, click to try again'
+                : '$ register (free)'}
             </button>
             <div style={{ ...MONO, fontSize: 10.5, color: C.t3 }}>
               # real product demo, run with the vendor. special partner pricing available after, if it's a fit.
