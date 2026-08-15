@@ -8,6 +8,7 @@ import AuditPage from './AuditPage.jsx';
 import BrokenPage from './BrokenPage.jsx';
 import ReviewPage from './ReviewPage.jsx';
 import WebinarPage from './WebinarPage.jsx';
+import PartnerWebinarPage from './PartnerWebinarPage.jsx';
 import './experience/styles.css';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
   if (route.startsWith('#/broken')) return <BrokenPage />;
   if (route.startsWith('#/review')) return <ReviewPage />;
   if (route.startsWith('#/webinar')) return <WebinarPage />;
+  if (route.startsWith('#/partners')) return <PartnerWebinarPage />;
   if (route.startsWith('#/experience')) return reduced ? <StaticExperience /> : <ScrollExperience />;
   return <HomePage />;
 }
